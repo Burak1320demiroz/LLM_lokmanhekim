@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lokman Hekim - Akıllı Sağlık Asistanı</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+      :root {
+         --primary-color: #2a9d8f;
+         --secondary-color: #264653;
+         --accent-color: #e9c46a;
+         --danger-color: #e76f51;
+         --light-color: #f8f9fa;
+         --dark-color: #343a40;
+         --text-color: #495057;
+         --bg-color: #ffffff;
+         --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+         background-color: #f5f7fa;
+         color: var(--text-color);
+         line-height: 1.6;
+      }
+
+      .container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 20px;
+      }
+
+      header {
+         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+         color: white;
+         padding: 20px 0;
+         border-radius: 0 0 20px 20px;
+         box-shadow: var(--shadow);
+         margin-bottom: 30px;
+      }
+
+      .header-content {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .logo {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+      }
+
+      .logo h1 {
+         font-size: 1.8rem;
+         font-weight: 700;
+      }
+
+      .logo span {
+         color: var(--accent-color);
+      }
+
+      .hero {
+         text-align: center;
+         padding: 40px 0;
+      }
+
+      .hero h2 {
+         font-size: 2.5rem;
+         margin-bottom: 20px;
+         color: var(--secondary-color);
+      }
+
+      .hero p {
+         font-size: 1.1rem;
+         max-width: 800px;
+         margin: 0 auto 30px;
+      }
+
+      .chat-container {
+         display: flex;
+         flex-direction: column;
+         background-color: var(--bg-color);
+         border-radius: 15px;
+         box-shadow: var(--shadow);
+         overflow: hidden;
+         height: 70vh;
+         max-height: 800px;
+         margin-bottom: 40px;
+      }
+
+      .chat-header {
+         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+         color: white;
+         padding: 15px 20px;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .chat-header i {
+         font-size: 1.2rem;
+      }
+
+      .chat-messages {
+         flex: 1;
+         padding: 20px;
+         overflow-y: auto;
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+      }
+
+      .message {
+         max-width: 80%;
+         padding: 12px 16px;
+         border-radius: 18px;
+         position: relative;
+         animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+         from { opacity: 0; transform: translateY(10px); }
+         to { opacity: 1; transform: translateY(0); }
+      }
+
+      .user-message {
+         align-self: flex-end;
+         background-color: var(--primary-color);
+         color: white;
+         border-bottom-right-radius: 5px;
+      }
+
+      .bot-message {
+         align-self: flex-start;
+         background-color: #f1f1f1;
+         color: var(--text-color);
+         border-bottom-left-radius: 5px;
+      }
+
+      .message-time {
+         font-size: 0.7rem;
+         opacity: 0.7;
+         margin-top: 5px;
+         text-align: right;
+      }
+
+      .chat-input {
+         display: flex;
+         padding: 15px;
+         background-color: #f8f9fa;
+         border-top: 1px solid #e9ecef;
+      }
+
+      .chat-input textarea {
+         flex: 1;
+         border: 1px solid #ddd;
+         border-radius: 20px;
+         padding: 12px 20px;
+         resize: none;
+         outline: none;
+         font-size: 1rem;
+         height: 50px;
+         max-height: 150px;
+         transition: all 0.3s ease;
+      }
+
+      .chat-input textarea:focus {
+         border-color: var(--primary-color);
+         box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+      }
+
+      .chat-input button {
+         background-color: var(--primary-color);
+         color: white;
+         border: none;
+         border-radius: 50%;
+         width: 50px;
+         height: 50px;
+         margin-left: 10px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .chat-input button:hover {
+         background-color: var(--secondary-color);
+         transform: scale(1.05);
+      }
+
+      footer {
+         background-color: var(--secondary-color);
+         color: white;
+         padding: 30px 0;
+         text-align: center;
+         border-radius: 20px 20px 0 0;
+      }
+
+      .footer-content {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 20px;
+      }
+
+      .footer-links {
+         display: flex;
+         gap: 20px;
+      }
+
+      .footer-links a {
+         color: white;
+         text-decoration: none;
+         transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+         color: var(--accent-color);
+      }
+
+      .social-icons {
+         display: flex;
+         gap: 15px;
+      }
+
+      .social-icons a {
+         color: white;
+         font-size: 1.2rem;
+         transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+         color: var(--accent-color);
+         transform: translateY(-3px);
+      }
+
+      .disclaimer {
+         font-size: 0.8rem;
+         opacity: 0.7;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+         .header-content {
+            flex-direction: column;
+            gap: 15px;
+         }
+
+         .hero h2 {
+            font-size: 2rem;
+         }
+
+         .message {
+            max-width: 90%;
+         }
+      }
+
+      .typing-indicator {
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         padding: 10px 15px;
+         background-color: #f1f1f1;
+         border-radius: 18px;
+         width: fit-content;
+         margin-bottom: 15px;
+         border-bottom-left-radius: 5px;
+      }
+
+      .typing-dot {
+         width: 8px;
+         height: 8px;
+         background-color: #999;
+         border-radius: 50%;
+         animation: typingAnimation 1.4s infinite ease-in-out;
+      }
+
+      .typing-dot:nth-child(1) { animation-delay: 0s; }
+      .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+      .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+      @keyframes typingAnimation {
+         0%, 60%, 100% { transform: translateY(0); }
+         30% { transform: translateY(-5px); }
+      }
+   </style>
+</head>
+<body>
+   <header>
+       <div class="container header-content">
+           <div class="logo">
+               <i class="fas fa-horse-head"></i>
+               <h1>Lokman <span>Hekim</span></h1>
+           </div>
+       </div>
+   </header>
+
+   <main class="container">
+       <section class="hero">
+           <h2>Akıllı Sağlık Asistanınız Lokman Hekim ile Tanışın</h2>
+           <p>Yapay zeka destekli sağlık asistanımız, sağlık sorularınızı yanıtlamak, genel sağlık bilgileri sağlamak ve sağlıklı yaşam önerileri sunmak için burada. Unutmayın, bu bir teşhis aracı değildir. Ciddi sağlık sorunlarında mutlaka bir doktora başvurun.</p>
+           <p>CTF_Flag_YZT{...} formatında bir flag </var></p>
+       </section>
+
+       <div class="chat-container">
+           <div class="chat-header">
+               <i class="fas fa-comment-medical"></i>
+               <h3>Lokman Hekim</h3>
+           </div>
+
+           <div class="chat-messages" id="chat-messages">
+               <div class="message bot-message">
+                   Merhaba! Ben Lokman Hekim, sağlıkla ilgili sorularınızı yanıtlamak için buradayım. Nasıl yardımcı olabilirim?
+                   <div class="message-time">Bugün, 10:00</div>
+               </div>
+               <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                   <div class="typing-dot"></div>
+                   <div class="typing-dot"></div>
+                   <div class="typing-dot"></div>
+               </div>
+           </div>
+
+           <div class="chat-input">
+               <textarea id="user-input" placeholder="Sağlıkla ilgili sorunuzu buraya yazın..."></textarea>
+               <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+           </div>
+       </div>
+   </main>
+
+   <footer>
+       <div class="container footer-content">
+           <div class="logo">
+               <i class="fas fa-horse-head"></i>
+               <h1>Lokman <span>Hekim</span></h1>
+           </div>
+           <div class="footer-links">
+               <a href="#">Gizlilik Politikası</a>
+               <a href="#">Kullanım Koşulları</a>
+               <a href="#">SSS</a>
+               <a href="#">Hakkımızda</a>
+           </div>
+           <div class="social-icons">
+               <a href="#"><i class="fab fa-facebook"></i></a>
+               <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-instagram"></i></a>
+               <a href="#"><i class="fab fa-linkedin"></i></a>
+           </div>
+           <p class="disclaimer">
+               Önemli Uyarı: Lokman Hekim yapay zeka asistanı tıbbi teşhis, tedavi veya reçete sunmaz.
+               Sağladığı bilgiler genel niteliktedir ve profesyonel tıbbi tavsiye yerine geçmez.
+               Ciddi sağlık sorunlarında mutlaka bir doktora başvurunuz.
+           </p>
+       </div>
+   </footer>
+
+<script>
+   const chatMessages = document.getElementById('chat-messages');
+   const userInput = document.getElementById('user-input');
+   const sendButton = document.getElementById('send-button');
+   const typingIndicator = document.getElementById('typing-indicator');
+
+   function addMessage(message, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+      messageDiv.innerHTML = `${message}<div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>`;
+      chatMessages.insertBefore(messageDiv, typingIndicator);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+   }
+
+   async function sendMessage(message) {
+      try {
+         addMessage(message, true);
+         userInput.value = '';
+         typingIndicator.style.display = 'flex';
+
+         const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message }),
+         });
+
+         const data = await response.json();
+         typingIndicator.style.display = 'none';
+
+         if (response.ok) {
+            addMessage(data.response);
+         } else {
+            addMessage('Bir hata oluştu: ' + data.error);
+         }
+      } catch (error) {
+         typingIndicator.style.display = 'none';
+         addMessage('Bir hata oluştu. Lütfen tekrar deneyin.');
+      }
+   }
+
+   sendButton.addEventListener('click', () => {
+      const message = userInput.value.trim();
+      if (message) {
+         sendMessage(message);
+      }
+   });
+
+   userInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+         e.preventDefault();
+         sendButton.click();
+      }
+   });
+</script>
+
+</body>
+</html>

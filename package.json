@@ -1,0 +1,23 @@
+{
+  "name": "llm-chat-app",
+  "version": "1.0.0",
+  "description": "LLM Chat Application with Express and LangChain",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "langchain": "^0.1.25",
+    "@langchain/community": "^0.0.34",
+    "dotenv": "^16.4.5",
+    "express-session": "^1.18.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.3",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+} 
