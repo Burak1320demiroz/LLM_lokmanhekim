@@ -1,6 +1,8 @@
-# Lokman Hekim LLM Chatbot
+# Lokman Hekim LLM
 
 LangChain ve Ollama kullanan, reçete CSV dosyalarını işleyip analiz eden Node.js tabanlı sohbet uygulaması.
+
+![Phoenix Logo](images/1.png)
 
 ## Kurulum
 
@@ -29,6 +31,7 @@ ollama serve
 ```bash
 npm run dev
 ```
+![Phoenix Logo](images/2.png)
 
 ## Kullanım
 
