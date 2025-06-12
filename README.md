@@ -31,7 +31,6 @@ ollama serve
 ```bash
 npm run dev
 ```
-![Phoenix Logo](images/2.png)
 
 ## Kullanım
 
@@ -40,3 +39,4 @@ npm run dev
 * Reçete CSV URL'si göndererek analiz alabilirsin.
 
 ---
+![Phoenix Logo](images/2.png)
